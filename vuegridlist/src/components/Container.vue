@@ -2,27 +2,30 @@
   <div>
     <button @click="toggleView">Toggle View</button>
     <div id="tweets" :class="{ 'list-view': listview }">
-      <article
-        class="tweet"
-        v-for="(tweet, index) in tweets"
+      <vue-container
+        v-for="(tweet, index) in tweet"
         v-bind:key="index"
+        v-bind:myAuthor="tweet.author"
+        v-bimd:myDate="tweet.date"
+        v-bind:myText="tweet.text"
       >
-        <h4>{{ tweet.date }}</h4>
-        ,
-        <h6>{{ tweet.text }}</h6>
-        ,
-        <p>{{ tweet.author }}</p>
-      </article>
+      </vue-container>
     </div>
   </div>
 </template>
 <script>
+
 export default {
-  name: "vue-tweets",
+  name: "vue-container",
+  props: 
+    ['myAuthor',
+    'myDate',
+    'myText'],
+
   data() {
     return {
       listview: false,
-      tweets: [
+      tweet: [
         {
           author: "Karen",
           date: "December 13, 2020",
@@ -44,7 +47,7 @@ export default {
   methods: {
     toggleView() {
       this.listview = !this.listview;
-      alert("toggleview");
+      alert('toggleview');
     },
   },
 };
@@ -59,16 +62,5 @@ export default {
 #tweets.list-view {
   grid-template-columns: 1fr;
 }
-h4 {
-  background-color: plum;
-  font-size: 30px;
-}
-h6 {
-  background: green;
-  font-size: 30px;
-}
-p {
-  background-color: cornflowerblue;
-  font-size: 30px;
-}
+
 </style>
