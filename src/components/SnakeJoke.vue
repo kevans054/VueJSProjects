@@ -1,24 +1,23 @@
 <template>
 <div id="SnakeJoke">
-    <button id="snake" type="submit" @click="getJokes">New Snake Joke</button>
+    <button id="snake" type="submit" @click="showJoke">New Snake Joke</button>
     </div>
     
 </template>
 
 <script>
 export default {
-    SnakeJoke,
+    name: 'SnakeJoke',
 
     computed: {
 
         joke() {
-            let str = this.$store.state.joke;
-            return str.replaceAll('', '').toLowerCase();
+            return this.$store.getters.getJoke.toLowerCase();
         }
     },
     methods: {
         showJoke() {
-            this.$store.commit('showJoke', this.joke);
+            this.$store.commit('SET_Joke', this.joke);
         }
     }
 }

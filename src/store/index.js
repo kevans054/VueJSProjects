@@ -6,31 +6,44 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    joke: 'Did you hear the one about ...'
+    joke: '',
+  },
+  getters: {
+    getJoke (state) {
+      return state.joke;
+    }
   },
 
   actions: {
-    showJoke({ commit }) {
-      axios.get('https://geek-jokes.sameerkumar.website/api?format=json/')
-        .then(response => {
-          commit('SET_Jokes', response.data);
-        }).catch(error => {
-          console.log(error);
-        });
-    }
+    showJoke(context) {
+      axios
+      .request({
+        type: "get",
+        url: " https://geek-jokes.sameerkumar.website/api?format=json",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        params: {
+          format: "text",
+        },
+      })
+      .then((response) => {
+        context.commit("SET_Joke", response.data.joke);
+      })
+      .catch((error) => {
+        this.errorMessage = error;
+        console.log(error);
+      });
   },
+},
 
   mutations: {
-    SET_Jokes(state, joke) {
-      state.joke = joke
+    SET_Joke(state, payload) {
+      state.joke = payload;
     }
   },
 
-  getters: {
-    joke: state => {
-      return state.joke;
-    }
-  }
+ 
 })
 
 

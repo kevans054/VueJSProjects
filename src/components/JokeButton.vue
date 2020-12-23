@@ -1,7 +1,7 @@
 <template>
     <div id="JokeButton">
-        <button id="NewJokes" type="submit" @click="getJoke">New Joke</button>
-        <p>{{joke}}</p>
+        <button id="NewJokes" type="submit" @click="showJoke">New Joke</button>
+        <p>{{this.joke}}</p>
         <normal-joke></normal-joke>
         <loud-joke></loud-joke>
         <snake-joke></snake-joke>
@@ -20,18 +20,16 @@
             LoudJoke,
             SnakeJoke,
         },
-        data() {
-            return{
-                joke: ''
+        computed: {
+            joke() {
+                return this.$store.getters.getJoke;
             }
         },
       
         methods:{
-            getJoke()
+            showJoke()
             {
-                this.$store.commit('showJoke', '');
-                this.$store.dispatch.getJoke;
-                
+                this.$store.dispatch('showJoke');
             }
         }
     }
