@@ -1,6 +1,6 @@
 <template>
     <div id="JokeButton">
-        <button id="NewJokes" type="submit" @click="getJokes">New Joke</button>
+        <button id="NewJokes" type="submit" @click="getJoke">New Joke</button>
         
         <p>{{joke}}</p>
         <!-- <loud-joke></loud-joke>
@@ -30,7 +30,7 @@
         // },
 
         computed: mapState([
-        'jokes'
+        'joke'
         ]),
         
             mounted() {
@@ -38,7 +38,7 @@
                 this.$store.dispatch('SET_Joke')
             },
         methods:{
-            getJokes()
+            getJoke()
             {
                 this.$store.commit("getJoke");
                 // console.log(jokes);
