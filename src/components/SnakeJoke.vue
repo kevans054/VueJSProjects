@@ -9,17 +9,18 @@
 export default {
     SnakeJoke,
 
-    // computed: {
+    computed: {
 
-    //     joke() {
-    //         return this.$store.state.joke;
-    //     }
-    // },
-    // methods: {
-    //     showJoke() {
-    //         this.$store.commit('showJoke', this.joke);
-    //     }
-    // }
+        joke() {
+            let str = this.$store.state.joke;
+            return str.replaceAll('', '').toLowerCase();
+        }
+    },
+    methods: {
+        showJoke() {
+            this.$store.commit('showJoke', this.joke);
+        }
+    }
 }
 </script>
 <style scoped>

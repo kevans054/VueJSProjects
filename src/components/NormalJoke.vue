@@ -8,18 +8,17 @@
 export default {
     name: 'NormalJoke',
 
-    // computed: {
+    computed: {
 
-    //     joke() {
-    //         return this.$store.state.joke;
-    //     }
-    // },
-    // methods: {
-    //     showJoke() {
-    //         this.$store.commit('showJoke', this.joke);
-    //     }
-    // }
-    
+        joke() {
+            return this.$store.state.joke;
+        }
+    },
+    methods: {
+        showJoke() {
+            this.$store.commit('showJoke', this.joke);
+        }
+    }
 }
 </script>
 <style scoped>

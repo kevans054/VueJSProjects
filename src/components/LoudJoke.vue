@@ -8,17 +8,17 @@
 export default {
     LoudJoke,
 
-//     computed: {
+    computed: {
 
-//         joke() {
-//             return this.$store.state.joke.toUpperCase();
-//         }
-//     },
-//     methods: {
-//         showJoke() {
-//             this.$store.commit('showJoke', this.joke);
-//         }
-//     }
+        joke() {
+            return this.$store.state.joke.toUpperCase();
+        }
+    },
+    methods: {
+        showJoke() {
+            this.$store.commit('showJoke', this.joke);
+        }
+    }
 }
 </script>
 <style scoped>
